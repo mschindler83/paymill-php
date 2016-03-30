@@ -16,25 +16,15 @@ env:
   matrix:
     include:
       - php: 5.6
-        env:
-          - PAYMILL_WH_1: "transaction.succeeded"
-          - PAYMILL_WH_2: "subscription.created"
+        env: PAYMILL_WH_1=transaction.succeeded PAYMILL_WH_2=subscription.created
       - php: 5.5
-        env:
-          - PAYMILL_WH_1: "chargeback.executed"
-          - PAYMILL_WH_2: "transaction.created"
+        env: PAYMILL_WH_1=chargeback.executed PAYMILL_WH_2=transaction.created
       - php: 5.4
-        env:
-          - PAYMILL_WH_1: "transaction.pending"
-          - PAYMILL_WH_2: "transaction.failed"
+        env: PAYMILL_WH_1=transaction.pending PAYMILL_WH_2=transaction.failed
       - php: 5.3
-        env:
-          - PAYMILL_WH_1: "client.updated"
-          - PAYMILL_WH_2: "subscription.updated"
+        env: PAYMILL_WH_1=client.updated PAYMILL_WH_2=subscription.updated
       - php: hhvm
-        env:
-          - PAYMILL_WH_1: "subscription.deleted"
-          - PAYMILL_WH_2: "subscription.succeeded"
+        env: PAYMILL_WH_1=subscription.deleted PAYMILL_WH_2=subscription.succeeded
 
 before_install: composer self-update
 install: composer install
