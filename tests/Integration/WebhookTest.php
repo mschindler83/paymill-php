@@ -91,6 +91,8 @@ class WebhookTest extends IntegrationBase
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result, var_export($result, true));
         $this->assertEquals($model->getId(), $result->getId());
         $this->assertFalse($result->getActive());
+
+        return $result;
     }
 
     /**
@@ -103,7 +105,8 @@ class WebhookTest extends IntegrationBase
         $this->_model->setId($model->getId());
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result = $this->_service->getOne($this->_model), var_export($result, true));
         $this->assertEquals($model->getId(), $result->getId());
-        $this->deleteWebhook($result);
+
+        return $result;
     }
 
     /**
@@ -160,5 +163,4 @@ class WebhookTest extends IntegrationBase
         $result = $this->_service->delete($this->_model);
         $this->assertInternalType('array', $result, var_export($result, true));
     }
-
 }
