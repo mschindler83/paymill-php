@@ -74,6 +74,7 @@ class WebhookTest extends IntegrationBase
             ->setEventTypes(array(WEBHOOK_1, WEBHOOK_2));
         $result = $this->_service->create($this->_model);
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result, var_export($result, true));
+        $this->deleteWebhook($result);
     }
 
     /**
