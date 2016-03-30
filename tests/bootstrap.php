@@ -38,6 +38,14 @@ if (!defined('API_PUBLIC_TEST_KEY')) {
     define('API_PUBLIC_TEST_KEY', getenv('PAYMILL_API_PUBLIC_TEST_KEY') ? getenv('PAYMILL_API_PUBLIC_TEST_KEY') : '');
 }
 
+if (!defined('WEBHOOK_1')) {
+    define('WEBHOOK_1', getenv('PAYMILL_WH_1') ? getenv('PAYMILL_WH_1') : 'transaction.succeeded');
+}
+
+if (!defined('WEBHOOK_2')) {
+    define('WEBHOOK_2', getenv('PAYMILL_WH_2') ? getenv('PAYMILL_WH_2') : 'subscription.created');
+}
+
 /**
  * SSL_VERIFY_PEER can be deactivated by environment to enable other hosts where the original certificate
  * does not match (i.e. for local development)

@@ -55,9 +55,7 @@ class WebhookTest extends IntegrationBase
     {
         $this->_model->setUrl('http://example.com/dummyCallback')
             ->setActive(true)
-            ->setEventTypes(array(
-                'transaction.succeeded', 'subscription.created'
-            ));
+            ->setEventTypes(array(WEBHOOK_1, WEBHOOK_2));
         $result = $this->_service->create($this->_model);
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result, var_export($result, true));
         $this->assertTrue($result->getActive());
@@ -73,12 +71,9 @@ class WebhookTest extends IntegrationBase
     {
         $this->_model->setEmail('dummy@example.com')
             ->setActive(true)
-            ->setEventTypes(array(
-                'transaction.succeeded', 'subscription.created'
-            ));
+            ->setEventTypes(array(WEBHOOK_1, WEBHOOK_2));
         $result = $this->_service->create($this->_model);
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result, var_export($result, true));
-        $this->deleteWebhook($result);
     }
 
     /**
@@ -108,6 +103,7 @@ class WebhookTest extends IntegrationBase
         $this->_model->setId($model->getId());
         $this->assertInstanceOf('Paymill\Models\Response\Webhook', $result = $this->_service->getOne($this->_model), var_export($result, true));
         $this->assertEquals($model->getId(), $result->getId());
+        $this->deleteWebhook($result);
     }
 
     /**
